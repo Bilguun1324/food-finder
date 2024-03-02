@@ -8,26 +8,39 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .full-screen {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@layer base {
+  h1 {
+    @apply text-primary;
+  }
+  h2 {
+    @apply text-primary;
+  }
+  div {
+    @apply text-primary;
+  }
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }

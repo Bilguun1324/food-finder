@@ -35,7 +35,7 @@ export const Establishment = ({ setStep }: ProfileCreationType) => {
       <h1 className="text-2xl md:text-4xl font-bold mb-4">
         What kind of foods do you like?
       </h1>
-      <div className="md:w-7/12 w-9/12 flex flex-wrap justify-center">
+      <div className="md:w-7/12 w-9/12 h-1/2 overflow-auto flex flex-wrap justify-center">
         {ESTABLISHMENTS.map((establishment, index) => {
           return (
             <Box

@@ -1,4 +1,5 @@
 import { createContext, useState, Dispatch, SetStateAction } from "react";
+import { RestaurantType } from "./utils/datas";
 
 export const PreferenceContext = createContext<{
   cuisines: string[];
@@ -9,6 +10,8 @@ export const PreferenceContext = createContext<{
   setCost: Dispatch<SetStateAction<number>>;
   distance: number;
   setDistance: Dispatch<SetStateAction<number>>;
+  savedRestaurants: RestaurantType[];
+  setSavedRestaurants: Dispatch<SetStateAction<RestaurantType[]>>;
 }>({
   cuisines: [],
   setCuisines: () => {},
@@ -18,6 +21,8 @@ export const PreferenceContext = createContext<{
   setCost: () => {},
   distance: 0,
   setDistance: () => {},
+  savedRestaurants: [],
+  setSavedRestaurants: () => {},
 });
 
 export const PreferenceProvider = ({
@@ -25,10 +30,13 @@ export const PreferenceProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  let [cuisines, setCuisines] = useState<string[]>([]);
-  let [establishments, setEstablishments] = useState<string[]>([]);
-  let [cost, setCost] = useState<number>(10);
-  let [distance, setDistance] = useState<number>(3);
+  const [cuisines, setCuisines] = useState<string[]>([]);
+  const [establishments, setEstablishments] = useState<string[]>([]);
+  const [cost, setCost] = useState<number>(10);
+  const [distance, setDistance] = useState<number>(3);
+  const [savedRestaurants, setSavedRestaurants] = useState<RestaurantType[]>(
+    []
+  );
 
   return (
     <PreferenceContext.Provider
@@ -41,6 +49,8 @@ export const PreferenceProvider = ({
         setCost,
         distance,
         setDistance,
+        savedRestaurants,
+        setSavedRestaurants,
       }}
     >
       {children}
